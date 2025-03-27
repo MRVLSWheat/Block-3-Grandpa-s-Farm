@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Animal spawn and AI test
+  productName: Grandpa's Weed Farm
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -837,14 +837,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Animal spawn and AI test
+  metroPackageName: Grandpa's Weed Farm
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Animal spawn and AI test
+  metroApplicationDescription: Grandpa's Weed Farm
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -915,11 +915,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 3fb3cd04-e84d-4be4-ab4a-4c229ca949ce
+  cloudProjectId: e6661cb2-caf2-4095-b6ad-f0f603e62860
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Animal spawn and AI test
-  organizationId: gnxaknu
+  projectName: Grandpa's Weed Farm
+  organizationId: unity_sruu3stdetzpdg
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
