@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4877696639736535079}
   - component: {fileID: 2219542087431085018}
   - component: {fileID: -6798432407663903418}
+  - component: {fileID: 8655028877845874782}
   m_Layer: 0
   m_Name: Bunny placeholder
   m_TagString: Untagged
@@ -146,3 +147,20 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8655028877845874782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853254249986564779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd8ee29993288c43a905930f950ba65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstStageDistance: 25
+  secondStageDistance: 10
+  minRunDistance: 20
+  maxRunDistance: 40
+  runAwaySpeed: 20
