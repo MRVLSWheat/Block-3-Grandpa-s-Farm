@@ -7,18 +7,26 @@ public class AnimalProximityBehaviour : MonoBehaviour
     public float minRunDistance = 5f;
     public float maxRunDistance = 15f;
     public float runAwaySpeed = 5f;
-    public float fleeAngleVariation = 45f; // Max random angle (in degrees) from the direct flee direction
+    public float approachSpeed = 2f; // Speed for approach behavior after feeding
+    public float fleeAngleVariation = 45f;
+    public float followTime = 5f; // Time to follow the player after feeding
+    public float minFollowDistance = 1f; // Minimum distance to maintain from the player
 
     private Transform player;
     private Animator animator;
     private bool isLookingAtPlayer = false;
-    private bool isRunningAway = false; // Flag to track if the animal is running
+    private bool isRunningAway = false;
+    private bool isFollowingPlayer = false; // Tracks if the animal is following the player
 
     private Vector3? runTarget = null;
+    private float followTimer = 0f; // Timer to track follow duration
+
+    private Renderer rend;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        rend = GetComponent<Renderer>();
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
@@ -29,6 +37,8 @@ public class AnimalProximityBehaviour : MonoBehaviour
         {
             Debug.LogWarning("Player object not found! Make sure your player has the 'Player' tag.");
         }
+
+        SetColor(new Color(1f, 0.4f, 0.7f)); // Neutral pink at start
     }
 
     void Update()
@@ -37,24 +47,51 @@ public class AnimalProximityBehaviour : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (isRunningAway)
+        // If following the player, handle follow behavior
+        if (isFollowingPlayer)
         {
-            // Continue running until we reach the target
-            RunAwayFromPlayer();
-        }
-        else if (distanceToPlayer <= secondStageDistance)
-        {
-            StartRunningAway();
-        }
-        else if (distanceToPlayer <= firstStageDistance)
-        {
-            LookAtPlayer();
-            runTarget = null;
+            FollowPlayer();
+            SetColor(Color.green); // Turn green while following
+
+            // Decrease follow timer and stop following when the timer runs out
+            followTimer -= Time.deltaTime;
+            if (followTimer <= 0f)
+            {
+                isFollowingPlayer = false;
+                SetColor(new Color(1f, 0.4f, 0.7f)); // Revert to neutral (pink)
+            }
         }
         else
         {
-            ResetBehavior();
-            runTarget = null;
+            // Handle different states based on the player's distance
+            if (isRunningAway)
+            {
+                RunAwayFromPlayer();
+                SetColor(Color.red); // Stage 2 (running)
+            }
+            else if (distanceToPlayer <= secondStageDistance)
+            {
+                StartRunningAway();
+                SetColor(Color.red); // Stage 2 (starting to run)
+            }
+            else if (distanceToPlayer <= firstStageDistance)
+            {
+                LookAtPlayer();
+                runTarget = null;
+                SetColor(Color.yellow); // Stage 1 (alert)
+
+                // Check for feed input when in stage 1
+                if (Input.GetKeyDown(KeyCode.F)) // Change this to your preferred button
+                {
+                    StartApproachingPlayer();
+                }
+            }
+            else
+            {
+                ResetBehavior();
+                runTarget = null;
+                SetColor(new Color(1f, 0.4f, 0.7f)); // Neutral (pink)
+            }
         }
     }
 
@@ -82,7 +119,6 @@ public class AnimalProximityBehaviour : MonoBehaviour
             animator.SetBool("IsMoving", true);
         }
 
-        // Pick a random direction to run
         Vector3 awayDirection = (transform.position - player.position).normalized;
         float randomAngle = Random.Range(-fleeAngleVariation, fleeAngleVariation);
         awayDirection = Quaternion.Euler(0, randomAngle, 0) * awayDirection;
@@ -90,7 +126,7 @@ public class AnimalProximityBehaviour : MonoBehaviour
         float randomDistance = Random.Range(minRunDistance, maxRunDistance);
         runTarget = transform.position + awayDirection * randomDistance;
 
-        isRunningAway = true; // Start the running away behavior
+        isRunningAway = true;
     }
 
     private void RunAwayFromPlayer()
@@ -100,10 +136,8 @@ public class AnimalProximityBehaviour : MonoBehaviour
         Vector3 moveDirection = (runTarget.Value - transform.position).normalized;
         transform.position += moveDirection * runAwaySpeed * Time.deltaTime;
 
-        // Check if we've reached the target distance
         if (Vector3.Distance(transform.position, runTarget.Value) < 0.5f)
         {
-            // Stop running once we’ve reached the target
             isRunningAway = false;
 
             if (animator != null)
@@ -120,6 +154,34 @@ public class AnimalProximityBehaviour : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("IsMoving", false);
+        }
+    }
+
+    private void StartApproachingPlayer()
+    {
+        // Start moving towards the player and start the follow behavior
+        isFollowingPlayer = true;
+        followTimer = followTime; // Reset follow timer
+    }
+
+    private void FollowPlayer()
+    {
+        // Move towards the player but maintain a minimum distance
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        // Only move towards the player if we are further than the minimum follow distance
+        if (distanceToPlayer > minFollowDistance)
+        {
+            transform.position += directionToPlayer * approachSpeed * Time.deltaTime; // Use approachSpeed here
+        }
+    }
+
+    private void SetColor(Color color)
+    {
+        if (rend != null && rend.material.color != color)
+        {
+            rend.material.color = color;
         }
     }
 }
