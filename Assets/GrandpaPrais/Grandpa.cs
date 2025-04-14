@@ -51,25 +51,25 @@ public class Grandpa : MonoBehaviour
     void OnGUI()
     {
         GUIStyle s = new GUIStyle();
-        s.fontSize = 200;
+        s.fontSize = 50;
         if (GrandpaSwap == 1)
         {
-            GUI.Label(new Rect(10, 100, 1800, 180), "Prais1",s);
+            GUI.Label(new Rect(350, 350, 1800, 180), "Good job Kid", s);
             GrandpaSwap2++;
         }
         else if (GrandpaSwap == 2)
         {
-            GUI.Label(new Rect(10, 100, 800, 80), "Prais2",s);
+            GUI.Label(new Rect(400, 350, 800, 80), "Well done", s);
             GrandpaSwap2++;
         }
         else if (GrandpaNoSwap == 1)
         {
-            GUI.Label(new Rect(10, 100, 1800, 180), "NoPrais1", s);
+            GUI.Label(new Rect(370, 350, 1800, 180), "Not good", s);
             GrandpaSwap2++;
         }
         else if (GrandpaNoSwap == 2)
         {
-            GUI.Label(new Rect(10, 100, 800, 80), "NoPrais2", s);
+            GUI.Label(new Rect(400, 350, 800, 80), "Too bad", s);
             GrandpaSwap2++;
         }
     }

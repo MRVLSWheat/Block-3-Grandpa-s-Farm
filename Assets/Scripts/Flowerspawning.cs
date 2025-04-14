@@ -34,17 +34,16 @@ namespace FlowerSpawner
             // Refresh list of active flowers
             flowers = GameObject.FindGameObjectsWithTag("Flower");
             flowerCount = flowers.Length;
+        }
 
-            // Press 'I' to respawn flowers (day skip mechanic)
-            if (Input.GetKeyDown("n"))
-            {
-                // Only respawn if between 3-9 flowers exist
+        public void RespawnFlowers()
+        {
                 if (flowerCount < 10 && flowerCount > 2)
                 {
                     SpawningFlowers();
                 }
-            }
         }
+
 
         // Spawns new flowers until reaching spawnCount
         void SpawningFlowers()
@@ -70,7 +69,7 @@ namespace FlowerSpawner
                 Random.Range(transform.position.x - 10, transform.position.x + 10),
 
                 // Fixed Y position (9 units up)
-                9,
+               (transform.position.y + 4),
 
                 // Random Z position within 10 units of spawner
                 Random.Range(transform.position.z - 10, transform.position.z + 10)
