@@ -53,8 +53,9 @@ MonoBehaviour:
       - rid: 6852985685364965393
       - rid: 6852985685364965394
       - rid: 8712630790384254976
-      - rid: 259888819951108096
-      - rid: 259888819951108097
+      - rid: -2
+      - rid: 2769379133410508801
+      - rid: 4141292179991560192
     m_RuntimeSettings:
       m_List: []
   m_AssetVersion: 8
@@ -87,11 +88,13 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 259888819951108096
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 2769379133410508801
       type: {class: UniversalRenderPipelineEditorAssets, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
         m_DefaultSettingsVolumeProfile: {fileID: 11400000, guid: eda47df5b85f4f249abf7abd73db2cb2, type: 2}
-    - rid: 259888819951108097
+    - rid: 4141292179991560192
       type: {class: UniversalRenderPipelineRuntimeXRResources, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
         m_xrOcclusionMeshPS: {fileID: 4800000, guid: 4431b1f1f743fbf4eb310a967890cbea, type: 3}
