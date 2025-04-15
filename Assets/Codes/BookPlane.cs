@@ -14,6 +14,7 @@ public class BookPlane : MonoBehaviour
            
             SpawnPlane();
             bookopened = true;
+         
         }
         else if (Input.GetKeyDown(KeyCode.B) && bookopened == true)
         {
