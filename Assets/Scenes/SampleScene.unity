@@ -298,7 +298,7 @@ Transform:
   m_GameObject: {fileID: 296832850}
   serializedVersion: 2
   m_LocalRotation: {x: -0.6182323, y: -0, z: -0, w: 0.78599536}
-  m_LocalPosition: {x: 0.2349968, y: 1.18, z: 1.58}
+  m_LocalPosition: {x: -0.03, y: 1.18, z: 1.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -435,7 +435,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5145951705174748990, guid: c2a48e33809400d42bafd0c744142bf5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 372.7
+      value: 405.4
       objectReference: {fileID: 0}
     - target: {fileID: 5145951705174748990, guid: c2a48e33809400d42bafd0c744142bf5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -443,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5145951705174748990, guid: c2a48e33809400d42bafd0c744142bf5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 235.6
+      value: 260.5
       objectReference: {fileID: 0}
     - target: {fileID: 5145951705174748990, guid: c2a48e33809400d42bafd0c744142bf5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -583,13 +583,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451833759}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22241862, y: -0, z: -0, w: 0.97495127}
-  m_LocalPosition: {x: 0.214, y: -3.353, z: -0.483}
-  m_LocalScale: {x: 1, y: 0.53852, z: 0.15062}
+  m_LocalRotation: {x: -0.6880922, y: -0, z: -0, w: 0.7256233}
+  m_LocalPosition: {x: 0.2140007, y: -3.3529997, z: -0.48300552}
+  m_LocalScale: {x: 0.083087, y: 1.1103724, z: 0.5506803}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2104460079}
-  m_LocalEulerAnglesHint: {x: 25.702, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -86.959, y: 0, z: 0}
 --- !u!1 &472416948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,9 +1056,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planePrefab: {fileID: 451833759}
-  PrefabTwo: {fileID: 0}
-  spawnPoint: {fileID: 296832851}
-  bookopened: 0
+  spawnedPlane: {fileID: 0}
+  cameraTransform: {fileID: 296832851}
+  offsetFromCamera: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 180, z: 90}
+  bookOpened: 0
 --- !u!1001 &1914944786264838826
 PrefabInstance:
   m_ObjectHideFlags: 0
