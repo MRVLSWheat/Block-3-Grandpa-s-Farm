@@ -1,26 +1,27 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AnimalProximityBehaviour : MonoBehaviour
 {
     public float firstStageDistance = 10f;
     public float secondStageDistance = 5f;
-    public float chaseSpeed = 5f;
+    public float minRunDistance = 5f;
+    public float maxRunDistance = 15f;
     public float fleeAngleVariation = 45f;
-    public float minChaseTime = 2f;
-    public float maxChaseTime = 6f;
 
     private Transform player;
     private Animator animator;
-    private bool isLookingAtPlayer = false;
-    private bool isChasing = false;
-    private float chaseTimer = 0f;
-
     private Renderer rend;
+    private NavMeshAgent agent;
+
+    private bool isLookingAtPlayer = false;
+    private bool isRunningAway = false;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
+        agent = GetComponent<NavMeshAgent>();
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
@@ -41,23 +42,18 @@ public class AnimalProximityBehaviour : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (isChasing)
+        if (isRunningAway)
         {
-            ChasePlayer();
-            SetColor(Color.red); // Chasing color
-            chaseTimer -= Time.deltaTime;
-
-            if (chaseTimer <= 0f)
+            SetColor(Color.red); // Stage 2 (running)
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
-                isChasing = false;
-                ResetBehavior();
-                SetColor(new Color(1f, 0.4f, 0.7f)); // Neutral
+                StopRunningAway();
             }
         }
         else if (distanceToPlayer <= secondStageDistance)
         {
-            StartChasing();
-            SetColor(Color.red); // Starting to chase
+            StartRunningAway();
+            SetColor(Color.red); // Stage 2 (starting to run)
         }
         else if (distanceToPlayer <= firstStageDistance)
         {
@@ -67,7 +63,7 @@ public class AnimalProximityBehaviour : MonoBehaviour
         else
         {
             ResetBehavior();
-            SetColor(new Color(1f, 0.4f, 0.7f)); // Neutral
+            SetColor(new Color(1f, 0.4f, 0.7f)); // Neutral (pink)
         }
     }
 
@@ -81,6 +77,8 @@ public class AnimalProximityBehaviour : MonoBehaviour
             {
                 animator.SetBool("IsMoving", false);
             }
+
+            agent.ResetPath(); // Stop any NavMesh movement
         }
 
         Vector3 direction = (player.position - transform.position).normalized;
@@ -88,25 +86,40 @@ public class AnimalProximityBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
-    private void StartChasing()
+    private void StartRunningAway()
     {
-        isChasing = true;
-        chaseTimer = Random.Range(minChaseTime, maxChaseTime);
-
         if (animator != null)
         {
             animator.SetBool("IsMoving", true);
         }
+
+        Vector3 awayDirection = (transform.position - player.position).normalized;
+        float randomAngle = Random.Range(-fleeAngleVariation, fleeAngleVariation);
+        awayDirection = Quaternion.Euler(0, randomAngle, 0) * awayDirection;
+
+        float randomDistance = Random.Range(minRunDistance, maxRunDistance);
+        Vector3 targetPosition = transform.position + awayDirection * randomDistance;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(targetPosition, out hit, maxRunDistance, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position);
+            isRunningAway = true;
+        }
+        else
+        {
+            Debug.LogWarning("Could not find valid NavMesh position to flee to.");
+        }
     }
 
-    private void ChasePlayer()
+    private void StopRunningAway()
     {
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        transform.position += directionToPlayer * chaseSpeed * Time.deltaTime;
+        isRunningAway = false;
 
-        // Rotate toward the player while chasing
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        if (animator != null)
+        {
+            animator.SetBool("IsMoving", false);
+        }
     }
 
     private void ResetBehavior()
@@ -117,6 +130,11 @@ public class AnimalProximityBehaviour : MonoBehaviour
         {
             animator.SetBool("IsMoving", false);
         }
+
+        if (!isRunningAway)
+        {
+            agent.ResetPath(); // Stop movement when not fleeing
+        }
     }
 
     private void SetColor(Color color)
@@ -125,5 +143,11 @@ public class AnimalProximityBehaviour : MonoBehaviour
         {
             rend.material.color = color;
         }
+    }
+
+    // Public getter for isRunningAway
+    public bool IsRunningAway()
+    {
+        return isRunningAway;
     }
 }
