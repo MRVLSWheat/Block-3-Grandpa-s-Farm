@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 7834368738234459165}
   - component: {fileID: 966595918659326118}
   - component: {fileID: 4877696639736535079}
-  - component: {fileID: 2219542087431085018}
-  - component: {fileID: 8655028877845874782}
   - component: {fileID: 4410907171262314516}
+  - component: {fileID: -6942496642318402326}
   m_Layer: 0
   m_Name: Bunny placeholder
   m_TagString: Untagged
@@ -111,39 +110,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2219542087431085018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2853254249986564779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f047817f27ea3a4a9a0c2d134ca754b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderRadius: 10
-  waitTime: 3
-  wanderSpeed: 2
-  fleeSpeed: 10
---- !u!114 &8655028877845874782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2853254249986564779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd8ee29993288c43a905930f950ba65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstStageDistance: 30
-  secondStageDistance: 10
-  minRunDistance: 15
-  maxRunDistance: 30
-  fleeAngleVariation: 90
 --- !u!195 &4410907171262314516
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -166,3 +132,26 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-6942496642318402326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853254249986564779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0923e20387a5c8409b99d609afe5d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  wanderRadius: 10
+  idleTimeMin: 2
+  idleTimeMax: 5
+  awarenessRadius: 10
+  fleeRadius: 10
+  fleeSpeed: 10
+  normalSpeed: 3.5
+  fleeDurationMin: 10
+  fleeDurationMax: 20
+  player: {fileID: 0}

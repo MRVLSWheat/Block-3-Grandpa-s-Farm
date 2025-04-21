@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af7c76574cfc704599785df948d3ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 10
-  wanderInterval: 5
+  wanderRadius: 20
+  wanderInterval: 10
   chaseRadius: 15
   stopChaseRadius: 20
