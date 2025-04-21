@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4877696639736535079}
   - component: {fileID: 4410907171262314516}
   - component: {fileID: -6942496642318402326}
+  - component: {fileID: 6849929514922657810}
   m_Layer: 0
   m_Name: Bunny placeholder
   m_TagString: Untagged
@@ -155,3 +156,17 @@ MonoBehaviour:
   fleeDurationMin: 10
   fleeDurationMax: 20
   player: {fileID: 0}
+--- !u!114 &6849929514922657810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853254249986564779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ebe3f5152c2534ba0d841040be3dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disturbanceIncreaseRate: 2
+  detectionRange: 10
