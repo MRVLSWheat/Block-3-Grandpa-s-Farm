@@ -55,8 +55,6 @@ public class DisturbanceManager : MonoBehaviour
         {
             disturbanceSlider.value = disturbanceValue;
         }
-
-        Debug.Log("Current Disturbance Value: " + disturbanceValue);
     }
 
     public void IncreaseDisturbance(float amount)

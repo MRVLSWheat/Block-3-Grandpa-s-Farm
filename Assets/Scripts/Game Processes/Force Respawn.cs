@@ -1,83 +1,169 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
-public class HostileAnimal : MonoBehaviour
+public class HostileAnimalSimple : MonoBehaviour
 {
-    // Distance for teleport trigger
     public float detectionRange = 5f;
+    public float spawnRadius = 3f;
+    public LayerMask groundLayer;
+
+    private static bool isPlayerFlagged = false;
 
     private GameObject player;
     private GameObject respawnPoint;
-    private PlayerMovement playerMovement;  // Reference to the player's movement script (if applicable)
 
-    public float spawnRadius = 5f;  // Radius around respawn point for random spawn
-    public LayerMask groundLayer;  // Layer for ground detection
+    private Image fadePanel;
+    private Canvas fadeCanvas;
+
+    private bool hasTriggered = false;
+    private Collider[] animalColliders;
+
+    private Rigidbody playerRigidbody; // To temporarily disable physics
+    private Collider playerCollider; // To temporarily disable collider
+    private bool playerInputEnabled = true; // Track if the player can move
 
     void Start()
     {
-        // Automatically find the player by its tag
         player = GameObject.FindWithTag("Player");
-
-        // Automatically find the Respawn object by name or tag
         respawnPoint = GameObject.Find("RespawnPoint");
 
-        // Check if the player has a movement script attached (if applicable)
-        if (player != null)
+        if (player == null || respawnPoint == null)
         {
-            playerMovement = player.GetComponent<PlayerMovement>();  // Assuming the script is called PlayerMovement
+            Debug.LogError("Player or RespawnPoint not found. Make sure they exist and are named/tagged correctly.");
+            enabled = false;
+            return;
         }
 
-        if (player == null)
+        playerRigidbody = player.GetComponent<Rigidbody>();
+        playerCollider = player.GetComponent<Collider>();
+
+        // If the player does not have a Rigidbody, let us know
+        if (playerRigidbody == null)
         {
-            Debug.LogError("Player not found in the scene. Ensure the player has the 'Player' tag.");
+            Debug.LogWarning("Player does not have a Rigidbody component. Teleportation may not work as expected.");
         }
 
-        if (respawnPoint == null)
-        {
-            Debug.LogError("Respawn Point not found in the scene. Ensure the RespawnPoint object exists.");
-        }
+        CreateFadeCanvas();
+        animalColliders = GetComponentsInChildren<Collider>();
     }
 
     void Update()
     {
-        // Only check if player and respawn point are available
-        if (player != null && respawnPoint != null)
-        {
-            // Calculate the distance between the player and the hostile animal
-            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+        if (hasTriggered || isPlayerFlagged) return;
 
-            // If the player is within detection range
-            if (distanceToPlayer <= detectionRange)
-            {
-                // Teleport the player instantly to a random position around the respawn point
-                Vector3 randomPosition = GetRandomSpawnPosition();
-                player.transform.position = randomPosition;
-                Debug.Log("Player has been teleported instantly to a random spawn position around the respawn point.");
-            }
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        if (distance <= detectionRange)
+        {
+            hasTriggered = true;
+            isPlayerFlagged = true;
+            StartCoroutine(TeleportWithFade());
         }
     }
 
-    // Function to get a random spawn position on the ground around the respawn point
+    IEnumerator TeleportWithFade()
+    {
+        // Disable animal colliders so they can't push the player
+        foreach (var col in animalColliders)
+            col.enabled = false;
+
+        // Fade to black quickly
+        yield return Fade(1f, 0.4f);
+
+        // Debugging teleportation
+        Debug.Log("Teleporting the player...");
+
+        // Temporarily disable the Rigidbody's physics to prevent interference
+        if (playerRigidbody != null)
+            playerRigidbody.isKinematic = true;
+
+        // Temporarily disable player collider to prevent collision interference
+        if (playerCollider != null)
+            playerCollider.enabled = false;
+
+        // Disable player input to prevent movement during teleportation
+        playerInputEnabled = false;
+
+        // Teleport
+        Vector3 targetPos = GetRandomSpawnPosition();
+        Debug.Log($"Teleporting player to position: {targetPos}");
+
+        // Directly set player position (Use SetPositionAndRotation for better control)
+        player.transform.SetPositionAndRotation(targetPos, player.transform.rotation);
+
+        // If the player has a Rigidbody, make sure to turn kinematic mode back off
+        if (playerRigidbody != null)
+            playerRigidbody.isKinematic = false;
+
+        // Re-enable player collider
+        if (playerCollider != null)
+            playerCollider.enabled = true;
+
+        // Re-enable player input
+        playerInputEnabled = true;
+
+        // Fade back slowly
+        yield return Fade(0f, 2f);
+
+        // Re-enable animal colliders
+        foreach (var col in animalColliders)
+            col.enabled = true;
+
+        // Reset flags
+        isPlayerFlagged = false;
+        hasTriggered = false;
+    }
+
     Vector3 GetRandomSpawnPosition()
     {
-        // Try generating a valid spawn position for a maximum number of attempts
-        for (int attempt = 0; attempt < 10; attempt++)
+        // Try finding a valid position around the respawn point
+        for (int i = 0; i < 10; i++)
         {
-            // Generate a random position around the respawn point within the specified radius
-            Vector3 randomPos = respawnPoint.transform.position + Random.insideUnitSphere * spawnRadius;
+            Vector3 randomOffset = Random.insideUnitSphere * spawnRadius;
+            randomOffset.y = 0;
+            Vector3 testPos = respawnPoint.transform.position + randomOffset + Vector3.up * 10f;
 
-            // Cast a ray down to find the ground position
-            RaycastHit hit;
-            if (Physics.Raycast(randomPos + Vector3.up * 10f, Vector3.down, out hit, Mathf.Infinity, groundLayer))
+            // Check if the position is on the ground
+            if (Physics.Raycast(testPos, Vector3.down, out RaycastHit hit, 20f, groundLayer))
             {
-                // Ensure the player is placed slightly above the ground to avoid spawning inside it
-                return hit.point + Vector3.up * 1f;  // 1f is the offset to ensure the player is not below ground
+                return hit.point + Vector3.up * 1f;
             }
+        }
+        // If no valid position is found, return respawnPoint position
+        return respawnPoint.transform.position;
+    }
 
-            // If raycast fails, keep trying up to the maximum attempts
+    void CreateFadeCanvas()
+    {
+        fadeCanvas = new GameObject("FadeCanvas").AddComponent<Canvas>();
+        fadeCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        fadeCanvas.sortingOrder = 999;
+
+        fadePanel = new GameObject("FadePanel").AddComponent<Image>();
+        fadePanel.transform.SetParent(fadeCanvas.transform, false);
+
+        RectTransform rt = fadePanel.rectTransform;
+        rt.anchorMin = Vector2.zero;
+        rt.anchorMax = Vector2.one;
+        rt.offsetMin = Vector2.zero;
+        rt.offsetMax = Vector2.zero;
+
+        fadePanel.color = new Color(0, 0, 0, 0);
+    }
+
+    IEnumerator Fade(float targetAlpha, float duration)
+    {
+        float startAlpha = fadePanel.color.a;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            float a = Mathf.Lerp(startAlpha, targetAlpha, time / duration);
+            fadePanel.color = new Color(0, 0, 0, a);
+            time += Time.deltaTime;
+            yield return null;
         }
 
-        // If no valid position was found, return the original respawn point as a fallback
-        Debug.LogWarning("No valid spawn position found, falling back to respawn point.");
-        return respawnPoint.transform.position;
+        fadePanel.color = new Color(0, 0, 0, targetAlpha);
     }
 }
