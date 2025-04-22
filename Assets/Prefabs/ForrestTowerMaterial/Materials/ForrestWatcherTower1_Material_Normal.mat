@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: hedgehog1_Material_Albedo
+  m_Name: ForrestWatcherTower1_Material_Normal
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -30,11 +30,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 51bfb18016f214f4289b2cd47604bc82, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4023d480fb706b64796e8e6deddfd13a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: a2dec1623fa9c374bbde498632e537a5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 857afebfc1c650e4e8fb2e38116c00b4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -54,19 +54,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 51bfb18016f214f4289b2cd47604bc82, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4023d480fb706b64796e8e6deddfd13a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: bc551e0f49084db40a25c929d90b604a, type: 3}
+        m_Texture: {fileID: 2800000, guid: d12f5d9ed6c3a3147a974c04f7add9ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 754f5a915af304841a004df1d3281cef, type: 3}
+        m_Texture: {fileID: 2800000, guid: 903cc3e3d705566479398c0b21e8762d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 9c9efd2ad1724324f9264a92e1d3567b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6edac4aee4015f14cb92b10be1e5e954, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -110,7 +110,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -125,7 +125,7 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &4319728759311961927
+--- !u!114 &7454787606860193520
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
