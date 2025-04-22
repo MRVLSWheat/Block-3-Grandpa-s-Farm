@@ -18,12 +18,13 @@ public class BookMenu : MonoBehaviour
     public Vector2 leftPagePosition = new Vector2(-200, 0); // Position for the left page
     public Vector2 rightPagePosition = new Vector2(200, 0); // Position for the right page
 
-    // Predefined list for 6 pages with placeholders
+    // List for storing left and right page sprites
     [Header("Page Sprites")]
     public List<PageSprites> pageSpritesList = new List<PageSprites>();
 
-    // Placeholder sprite to use if no sprite is assigned
-    private Sprite placeholderSprite;
+    // Public field to allow changing background sprite from Inspector
+    [Header("Background Settings")]
+    public Sprite customBackgroundSprite;  // Custom background sprite to assign in Inspector
 
     void Start()
     {
@@ -41,17 +42,17 @@ public class BookMenu : MonoBehaviour
         // Create the right page (Image) with adjustable position
         rightPage = CreatePage("RightPage", rightPagePosition);
 
-        // Automatically generate a placeholder sprite
-        placeholderSprite = CreatePlaceholderSprite(Color.white);
-
         // Initially hide the book
         bookUI.SetActive(false);
 
-        // If the pageSpritesList is empty, populate it with 6 predefined pages
+        // If the pageSpritesList is empty, log a warning to indicate it's missing content
         if (pageSpritesList.Count == 0)
         {
-            PopulatePages();
+            Debug.LogWarning("PageSprites list is empty. Please add pages.");
         }
+
+        // Set the background sprite
+        SetBackgroundSprite();
     }
 
     void Update()
@@ -104,9 +105,22 @@ public class BookMenu : MonoBehaviour
         {
             var currentPageSprites = pageSpritesList[currentPage];
 
-            // If no sprite is assigned, use the placeholder sprite
-            leftPage.sprite = currentPageSprites.leftPageSprite ? currentPageSprites.leftPageSprite : placeholderSprite;
-            rightPage.sprite = currentPageSprites.rightPageSprite ? currentPageSprites.rightPageSprite : placeholderSprite;
+            // Assign the sprites directly without placeholders
+            leftPage.sprite = currentPageSprites.leftPageSprite;
+            rightPage.sprite = currentPageSprites.rightPageSprite;
+        }
+    }
+
+    // Set the background sprite from the Inspector (if it's assigned)
+    void SetBackgroundSprite()
+    {
+        if (customBackgroundSprite != null)
+        {
+            backgroundImage.sprite = customBackgroundSprite;  // Set the background sprite
+        }
+        else
+        {
+            Debug.LogWarning("No background sprite assigned.");
         }
     }
 
@@ -131,57 +145,7 @@ public class BookMenu : MonoBehaviour
 
         Image backgroundImage = backgroundObject.AddComponent<Image>();
         backgroundImage.rectTransform.sizeDelta = new Vector2(800, 600); // Set background size
-        backgroundImage.sprite = CreatePlaceholderSprite(Color.gray); // Gray color placeholder for background
         return backgroundImage;
-    }
-
-    // Create a placeholder sprite with a unique color for each page
-    private Sprite CreatePlaceholderSprite(Color color)
-    {
-        // Create an empty texture
-        int width = 100;  // Width of the placeholder book pages
-        int height = 100; // Height of the placeholder book pages
-        Texture2D texture = new Texture2D(width * 2, height, TextureFormat.ARGB32, false);
-
-        // Fill texture with the given color
-        for (int x = 0; x < texture.width; x++)
-        {
-            for (int y = 0; y < texture.height; y++)
-            {
-                texture.SetPixel(x, y, color);
-            }
-        }
-
-        // Apply changes to the texture
-        texture.Apply();
-
-        // Create a sprite from the texture
-        return Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-    }
-
-    // Populating the pageSpritesList with 6 predefined pages
-    void PopulatePages()
-    {
-        // List of colors for the placeholders
-        Color[] pageColors = new Color[]
-        {
-            Color.red,    // Page 1 (red)
-            Color.green,  // Page 2 (green)
-            Color.blue,   // Page 3 (blue)
-            Color.yellow, // Page 4 (yellow)
-            Color.cyan,   // Page 5 (cyan)
-            Color.magenta // Page 6 (magenta)
-        };
-
-        for (int i = 0; i < 6; i++)
-        {
-            PageSprites newPage = new PageSprites
-            {
-                leftPageSprite = CreatePlaceholderSprite(pageColors[i]),  // Set unique color for left page
-                rightPageSprite = CreatePlaceholderSprite(pageColors[i])  // Set unique color for right page
-            };
-            pageSpritesList.Add(newPage);
-        }
     }
 
     // Class to store left and right page sprites for each page
