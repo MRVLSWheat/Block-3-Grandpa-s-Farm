@@ -5,6 +5,14 @@ public class Move : MonoBehaviour
     public float speed = 5f;
     public float interactionRange = 2f;
 
+    private Animator animator;
+
+    void Start()
+    {
+        // Grab the Animator component on this GameObject
+
+    }
+
     void Update()
     {
         // Movement
