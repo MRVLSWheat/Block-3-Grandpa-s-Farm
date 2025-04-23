@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4410907171262314516}
   - component: {fileID: -2995049115625815393}
   - component: {fileID: 8724164121438881467}
+  - component: {fileID: 392160532920263511}
   m_Layer: 0
   m_Name: Fox Placeholder
   m_TagString: Untagged
@@ -162,8 +163,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRange: 2
-  timeThreshold: 0.1
   spawnRadius: 5
   groundLayer:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &392160532920263511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853254249986564779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ebe3f5152c2534ba0d841040be3dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disturbanceIncreaseRate: 1
+  detectionRange: 5
