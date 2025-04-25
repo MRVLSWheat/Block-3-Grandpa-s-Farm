@@ -1,14 +1,16 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\",
+  "WorkspaceRootPath": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|c:\\users\\alexm\\documents\\github\\block-3-grandpa-s-farm\\assets\\script\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|c:\\users\\ruben\\documents\\block-3-grandpa-s-farm\\assets\\tooltips.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\tooltips.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\assets\\script\\move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\Move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,42 +20,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "book.cs",
               "DocumentMoniker": "C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\book.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\book.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\book.cs",
               "ToolTip": "C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\book.cs",
-              "RelativeToolTip": "Assets\\Script\\book.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
+              "RelativeToolTip": "..\\..\\..\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\book.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-07T11:53:22.209Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "ToolTips.cs",
+              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\ToolTips.cs",
+              "RelativeDocumentMoniker": "Assets\\ToolTips.cs",
+              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\ToolTips.cs",
+              "RelativeToolTip": "Assets\\ToolTips.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T12:45:58.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Move.cs",
               "DocumentMoniker": "C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\Move.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Move.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\Move.cs",
               "ToolTip": "C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\Move.cs",
-              "RelativeToolTip": "Assets\\Script\\Move.cs",
+              "RelativeToolTip": "..\\..\\..\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\Move.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T11:28:50.962Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T11:28:50.962Z"
             }
           ]
         }

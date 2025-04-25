@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7660488165287007793}
   m_Layer: 0
   m_Name: GrandPa
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,3 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dd0d7f41154fb4ca494a3b559f0a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrandpaPrais1: {fileID: 0}
+  GrandpaPrais2: {fileID: 0}
+  GrandpaNoPrais1: {fileID: 0}
+  GrandpaNoPrais2: {fileID: 0}
