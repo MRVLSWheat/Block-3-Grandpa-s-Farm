@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using TMPro;
 
 public class BookMenu : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class BookMenu : MonoBehaviour
     private int currentPage = 0;  // Track the current page
     private bool isBookOpen = false;  // Track if the book is open
     private bool toolTips = false;
-    private bool toolTipsChecked = false; // Track if tooltips have been checked
+    [SerializeField] private bool toolTipsChecked = false; // Track if tooltips have been checked
     [SerializeField] private float textLength = 300f; // X position for the tooltip text
     [SerializeField] private float textHeight = 380f; // Y position for the tooltip text
 
@@ -81,7 +82,7 @@ public class BookMenu : MonoBehaviour
 
                 if (toolTipsChecked == false)
                 {
-                    toolTips = true;
+                    toolTips = true; // Show tooltips when the book is opened
                 }
             }
         }
@@ -170,6 +171,8 @@ public class BookMenu : MonoBehaviour
         public Sprite rightPageSprite; // Sprite for the right page
     }
 
+
+    
     private void OnGUI()
     {
         if (toolTips == true)
@@ -180,4 +183,5 @@ public class BookMenu : MonoBehaviour
             toolTipsChecked = true;
         }
     }
+    
 }

@@ -1,9 +1,11 @@
 using UnityEngine;
+using TMPro;
 
 public class castRay : MonoBehaviour
 {
     Ray ray;
     RaycastHit hit;
+    public TextMeshProUGUI tooltipText;
     private bool pressingE = false;
     private Transform player;
     public float objectRange = 1f;
@@ -25,12 +27,17 @@ public class castRay : MonoBehaviour
 
                 if (distanceToHit <= objectRange)
                 {
-                    pressingE = true;
+                    tooltipText.text = "Press E";
+                    tooltipText.gameObject.SetActive(true);
+                    
+                    //pressingE = true;
                     return;
                 }
             }
         }
-        pressingE = false;
+        //pressingE = false;
+        tooltipText.gameObject.SetActive(false);
+
     }
 
     private void OnGUI()
