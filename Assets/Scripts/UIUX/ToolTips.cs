@@ -5,6 +5,13 @@ public class castRay : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     private bool pressingE = false;
+    private Transform player;
+    public float objectRange = 1f;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     void Update()
     {
@@ -12,21 +19,23 @@ public class castRay : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            // Only proceed if the object has a tag of "NPC" or "Flowers"
-            if (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Flower") /*|| hit.transform.CompareTag("Animals")*/)
+            if (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Flower"))
             {
-                pressingE = true;
-            }
-            else
-            {
-                pressingE = false;
+                float distanceToHit = Vector3.Distance(hit.transform.position, player.position);
+
+                if (distanceToHit <= objectRange)
+                {
+                    pressingE = true;
+                    return;
+                }
             }
         }
+        pressingE = false;
     }
 
     private void OnGUI()
     {
-        if (pressingE == true)
+        if (pressingE)
         {
             GUIStyle e = new GUIStyle();
             e.fontSize = 20;
