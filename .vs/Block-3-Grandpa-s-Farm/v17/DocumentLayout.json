@@ -3,46 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\assets\\scripts\\plants\\move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\plants\\move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\assets\\scripts\\game processes\\in game menu and book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\game processes\\in game menu and book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|c:\\users\\ruben\\documents\\block-3-grandpa-s-farm\\assets\\scripts\\plants\\harvestablecube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\plants\\harvestablecube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|c:\\users\\ruben\\documents\\block-3-grandpa-s-farm\\assets\\scripts\\game processes\\disturb meter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\game processes\\disturb meter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|c:\\users\\ruben\\documents\\block-3-grandpa-s-farm\\assets\\scripts\\plants\\flowerspawning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\plants\\flowerspawning.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|c:\\users\\ruben\\documents\\block-3-grandpa-s-farm\\assets\\scripts\\npc\\grandpa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\npc\\grandpa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|c:\\users\\ruben\\documents\\block-3-grandpa-s-farm\\assets\\animationhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\animationhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|c:\\users\\ruben\\documents\\block-3-grandpa-s-farm\\assets\\scripts\\npc\\testinggrandpa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\npc\\testinggrandpa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\assets\\pickuptest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\pickuptest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\assets\\scripts\\uiux\\tooltips.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uiux\\tooltips.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Library\\PackageCache\\com.unity.render-pipelines.universal@d680fce5716f\\Shaders\\Lit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.render-pipelines.universal@d680fce5716f\\Shaders\\Lit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\assets\\scripts\\uiux\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uiux\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\assets\\scripts\\uiux\\bookplane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\uiux\\bookplane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\Move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\PickingUpItemsAnimation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:Assets\\PickingUpItemsAnimation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Game Processes\\Disturb proximity logic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Game Processes\\Disturb proximity logic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\AnimalS\\Passive animal AI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\AnimalS\\Passive animal AI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\assets\\scripts\\game processes\\disturb proximity logic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9040A963-7F72-F826-278C-09FBFE781619}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\game processes\\disturb proximity logic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -52,144 +42,109 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "book.cs",
-              "DocumentMoniker": "C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\book.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\book.cs",
-              "ToolTip": "C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\book.cs",
-              "RelativeToolTip": "..\\..\\..\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\book.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T11:53:22.209Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HarvestableCube.cs",
-              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Plants\\HarvestableCube.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Plants\\HarvestableCube.cs",
-              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Plants\\HarvestableCube.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Plants\\HarvestableCube.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:30:01.683Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AnimationHand.cs",
-              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\AnimationHand.cs",
-              "RelativeDocumentMoniker": "Assets\\AnimationHand.cs",
-              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\AnimationHand.cs",
-              "RelativeToolTip": "Assets\\AnimationHand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
+              "Title": "TestingGrandpa.cs",
+              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\NPC\\TestingGrandpa.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\NPC\\TestingGrandpa.cs",
+              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\NPC\\TestingGrandpa.cs",
+              "RelativeToolTip": "Assets\\Scripts\\NPC\\TestingGrandpa.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T08:38:20.83Z",
+              "WhenOpened": "2025-04-25T13:08:48.566Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Flowerspawning.cs",
-              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Plants\\Flowerspawning.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Plants\\Flowerspawning.cs",
-              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Plants\\Flowerspawning.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Plants\\Flowerspawning.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAgwEgAAAASAAAAAAAAAA==",
+              "Title": "Grandpa.cs",
+              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\NPC\\Grandpa.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\NPC\\Grandpa.cs",
+              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\NPC\\Grandpa.cs",
+              "RelativeToolTip": "Assets\\Scripts\\NPC\\Grandpa.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T14:12:29.905Z",
+              "WhenOpened": "2025-04-25T13:08:42.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Disturb Meter.cs",
+              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Game Processes\\Disturb Meter.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Game Processes\\Disturb Meter.cs",
+              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Game Processes\\Disturb Meter.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Game Processes\\Disturb Meter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T12:16:38.58Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Move.cs",
-              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Plants\\Move.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Plants\\Move.cs",
-              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Plants\\Move.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Plants\\Move.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAA1wAwAAAAAAAAAAAAAAA==",
+              "Title": "In game menu and book.cs",
+              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Game Processes\\In game menu and book.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Game Processes\\In game menu and book.cs",
+              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Game Processes\\In game menu and book.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Game Processes\\In game menu and book.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T13:59:05.029Z",
+              "WhenOpened": "2025-04-25T11:44:41.52Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PickupTest.cs",
-              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\PickupTest.cs",
-              "RelativeDocumentMoniker": "Assets\\PickupTest.cs",
-              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\PickupTest.cs",
-              "RelativeToolTip": "Assets\\PickupTest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T13:19:58.396Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PickingUpItemsAnimation.cs",
-              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\PickingUpItemsAnimation.cs",
-              "RelativeDocumentMoniker": "Assets\\PickingUpItemsAnimation.cs",
-              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\PickingUpItemsAnimation.cs",
-              "RelativeToolTip": "Assets\\PickingUpItemsAnimation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T13:09:54.952Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Disturb proximity logic.cs",
-              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Game Processes\\Disturb proximity logic.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Game Processes\\Disturb proximity logic.cs",
-              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Game Processes\\Disturb proximity logic.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Game Processes\\Disturb proximity logic.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T11:57:57.308Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Passive animal AI.cs",
-              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\AnimalS\\Passive animal AI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\AnimalS\\Passive animal AI.cs",
-              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\AnimalS\\Passive animal AI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\AnimalS\\Passive animal AI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T11:49:51.357Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Lit.shader",
-              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Library\\PackageCache\\com.unity.render-pipelines.universal@d680fce5716f\\Shaders\\Lit.shader",
-              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@d680fce5716f\\Shaders\\Lit.shader",
-              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Library\\PackageCache\\com.unity.render-pipelines.universal@d680fce5716f\\Shaders\\Lit.shader",
-              "RelativeToolTip": "Library\\PackageCache\\com.unity.render-pipelines.universal@d680fce5716f\\Shaders\\Lit.shader",
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\UIUX\\Book.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UIUX\\Book.cs",
+              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\UIUX\\Book.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UIUX\\Book.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
-              "WhenOpened": "2025-04-22T11:02:03.042Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T11:44:19.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BookPlane.cs",
+              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\UIUX\\BookPlane.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UIUX\\BookPlane.cs",
+              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\UIUX\\BookPlane.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UIUX\\BookPlane.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T11:44:13.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ToolTips.cs",
+              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\UIUX\\ToolTips.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UIUX\\ToolTips.cs",
+              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\UIUX\\ToolTips.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UIUX\\ToolTips.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T11:35:47.069Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Move.cs",
-              "DocumentMoniker": "C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\Move.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\Move.cs",
-              "ToolTip": "C:\\Users\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\Move.cs",
-              "RelativeToolTip": "..\\..\\..\\alexm\\Documents\\GitHub\\Block-3-Grandpa-s-Farm\\Assets\\Script\\Move.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Disturb proximity logic.cs",
+              "DocumentMoniker": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Game Processes\\Disturb proximity logic.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Game Processes\\Disturb proximity logic.cs",
+              "ToolTip": "C:\\Users\\ruben\\Documents\\Block-3-Grandpa-s-Farm\\Assets\\Scripts\\Game Processes\\Disturb proximity logic.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Game Processes\\Disturb proximity logic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T11:28:50.962Z"
+              "WhenOpened": "2025-04-25T11:34:39.872Z"
             }
           ]
         }

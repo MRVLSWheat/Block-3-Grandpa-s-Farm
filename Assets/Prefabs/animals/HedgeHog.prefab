@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7656918688080896724}
-  - component: {fileID: 7834368738234459165}
   - component: {fileID: 4877696639736535079}
   - component: {fileID: 4410907171262314516}
   - component: {fileID: -6942496642318402326}
   - component: {fileID: 6849929514922657810}
   - component: {fileID: 7827018621189100355}
+  - component: {fileID: -6797553306385395624}
   m_Layer: 0
   m_Name: HedgeHog
   m_TagString: Untagged
@@ -38,14 +38,6 @@ Transform:
   - {fileID: 8434666541149655351}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 1, z: 0}
---- !u!33 &7834368738234459165
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2853254249986564779}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &4877696639736535079
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -148,8 +140,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 713690dd4e0800546a3cd75630a20f4e, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,6 +162,14 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &-6797553306385395624
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853254249986564779}
+  m_Mesh: {fileID: -5255695591274438653, guid: 3e9bc021198318847bea4501024dad43, type: 3}
 --- !u!1001 &8252650581381117660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,8 +234,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: hedgehog2
       objectReference: {fileID: 0}
+    - target: {fileID: 3631411906449527830, guid: 3e9bc021198318847bea4501024dad43, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ab5785b57f98a546909f73ee5a2b421, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3743993344710040121, guid: 3e9bc021198318847bea4501024dad43, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e9bc021198318847bea4501024dad43, type: 3}
