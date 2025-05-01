@@ -13,16 +13,16 @@ public class TaskManager : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
-            Debug.Log("[TaskManager] Duplicate instance destroyed");
             return;
         }
         Instance = this;
-        Debug.Log("[TaskManager] Awake → singleton instance set");
     }
 
+    /// <summary>
+    /// Call this whenever a quest is completed.
+    /// </summary>
     public void IncrementCompletedTasks()
     {
         CompletedTasks++;
-        Debug.Log($"[TaskManager] Total tasks completed: {CompletedTasks}");
     }
 }

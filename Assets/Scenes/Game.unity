@@ -1374,7 +1374,11 @@ MonoBehaviour:
   interactRadius: 3
   targetRadius: 3
   questDescription: Find that wierd guy watching the bunnies for me.
+  foundMessage: 'There he is! now lets return to gramps '
   completionMessage: Great job! Quest complete.
+  startMessageDuration: 2
+  foundMessageDuration: 2
+  completionMessageDuration: 2
 --- !u!1001 &2090499618997056760
 PrefabInstance:
   m_ObjectHideFlags: 0
