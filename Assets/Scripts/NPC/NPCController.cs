@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using System.Collections;
 
 public class NPCController : MonoBehaviour
 {
@@ -11,22 +13,36 @@ public class NPCController : MonoBehaviour
     [Header("Detection & Behavior")]
     public float detectionRadius = 15f;
     public float disturbanceThreshold = 50f;
-    public float stopDistanceToPlayer = 2f;        // Stop chase when this close
-    public float chaseCooldown = 5f;               // Cooldown after disengaging
+    public float stopDistanceToPlayer = 2f;
+    public float chaseCooldown = 5f;
     public float chaseSpeed = 3.5f;
     public float roamSpeed = 2f;
 
+    [Header("Capture Settings")]
+    public Transform respawnPoint;
+
+    [Header("UI Fade Settings")]
+    public Image fadeImage;              // Will be created at runtime if null
+    public float fadeDuration = 1f;      // Time to fade out/in
+
     [Header("Wander Pause Settings")]
-    public bool pauseAtWanderPoint = true;        // Whether to pause after wandering
-    public float pauseDuration = 2f;              // How long to pause before moving again
+    public bool pauseAtWanderPoint = true;
+    public float pauseDuration = 2f;
 
     private NavMeshAgent agent;
     private float roamTimer;
     private bool isChasingPlayer;
-    private float cooldownTimer;
     private bool inCooldown;
+    private float cooldownTimer;
     private bool isPausedAtWanderPoint = false;
     private float pauseTimer = 0f;
+
+    private void Awake()
+    {
+        // Ensure we have a fade Image
+        if (fadeImage == null)
+            CreateFadeImage();
+    }
 
     private void Start()
     {
@@ -41,27 +57,27 @@ public class NPCController : MonoBehaviour
             return;
 
         float disturbance = DisturbanceManager.Instance.disturbanceValue;
-        float distanceToPlayer = Vector3.Distance(transform.position, NPCManager.Instance.Player.position);
+        Transform player = NPCManager.Instance.Player;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (inCooldown)
         {
             cooldownTimer -= Time.deltaTime;
             if (cooldownTimer <= 0f)
-            {
                 inCooldown = false;
-            }
-            return; // Don't do anything else during cooldown
+            return;
         }
 
         if (isChasingPlayer)
         {
             if (distanceToPlayer <= stopDistanceToPlayer)
             {
-                ResetEngagementWithCooldown();  // Too close, disengage
+                TeleportPlayer(player);
+                ResetEngagementWithCooldown();
                 return;
             }
 
-            TryChasePlayer();  // Continue chasing
+            TryChasePlayer();
         }
         else
         {
@@ -71,24 +87,7 @@ public class NPCController : MonoBehaviour
             }
             else
             {
-                if (pauseAtWanderPoint && isPausedAtWanderPoint)
-                {
-                    pauseTimer -= Time.deltaTime;
-                    if (pauseTimer <= 0f)
-                    {
-                        isPausedAtWanderPoint = false;
-                        roamTimer = roamDelay; // Resume wander delay
-                    }
-                }
-                else
-                {
-                    roamTimer += Time.deltaTime;
-                    if (roamTimer >= roamDelay && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-                    {
-                        Wander();
-                        roamTimer = 0f;
-                    }
-                }
+                HandleWandering();
             }
         }
     }
@@ -104,13 +103,86 @@ public class NPCController : MonoBehaviour
         Vector3 playerPos = NPCManager.Instance.Player.position;
         NavMeshHit hit;
         if (NavMesh.SamplePosition(playerPos, out hit, 10f, NavMesh.AllAreas))
-        {
             agent.SetDestination(hit.position);
+        else
+            agent.SetDestination(playerPos);
+    }
+
+    private void TeleportPlayer(Transform player)
+    {
+        if (respawnPoint == null)
+        {
+            Debug.LogError("[NPCController] No respawnPoint set!");
+            return;
+        }
+
+        StartCoroutine(FadeAndTeleport(player));
+    }
+
+    private IEnumerator FadeAndTeleport(Transform player)
+    {
+        // Fade out
+        yield return StartCoroutine(Fade(0f, 1f));
+
+        // Teleport logic
+        NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
+        if (playerAgent != null)
+        {
+            playerAgent.Warp(respawnPoint.position);
         }
         else
         {
-            Debug.LogWarning($"[Forrest Watcher NPC] NavMesh.SamplePosition failed within 10 units. Falling back to raw player position.");
-            agent.SetDestination(playerPos);
+            CharacterController cc = player.GetComponent<CharacterController>();
+            if (cc != null)
+            {
+                cc.enabled = false;
+                player.position = respawnPoint.position;
+                cc.enabled = true;
+            }
+            else
+            {
+                player.position = respawnPoint.position;
+            }
+        }
+
+        Debug.Log($"Player captured by {name} and sent to respawn.");
+
+        // Fade in
+        yield return StartCoroutine(Fade(1f, 0f));
+    }
+
+    private IEnumerator Fade(float startAlpha, float endAlpha)
+    {
+        float elapsed = 0f;
+        Color c = fadeImage.color;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float a = Mathf.Lerp(startAlpha, endAlpha, elapsed / fadeDuration);
+            fadeImage.color = new Color(c.r, c.g, c.b, a);
+            yield return null;
+        }
+        fadeImage.color = new Color(c.r, c.g, c.b, endAlpha);
+    }
+
+    private void HandleWandering()
+    {
+        if (pauseAtWanderPoint && isPausedAtWanderPoint)
+        {
+            pauseTimer -= Time.deltaTime;
+            if (pauseTimer <= 0f)
+            {
+                isPausedAtWanderPoint = false;
+                roamTimer = roamDelay;
+            }
+            return;
+        }
+
+        roamTimer += Time.deltaTime;
+        if (roamTimer >= roamDelay && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            Wander();
+            roamTimer = 0f;
         }
     }
 
@@ -123,14 +195,13 @@ public class NPCController : MonoBehaviour
         agent.speed = roamSpeed;
 
         Vector3 randomDirection = Random.insideUnitSphere * roamRadius;
-        randomDirection.y = 0f; // Ensure flat movement
+        randomDirection.y = 0f;
         Vector3 targetPosition = homeCenter.position + randomDirection;
 
         NavMeshHit navHit;
         if (NavMesh.SamplePosition(targetPosition, out navHit, roamRadius, NavMesh.AllAreas))
         {
             agent.SetDestination(navHit.position);
-
             if (pauseAtWanderPoint)
             {
                 isPausedAtWanderPoint = true;
@@ -155,5 +226,33 @@ public class NPCController : MonoBehaviour
         ResetEngagement();
         inCooldown = true;
         cooldownTimer = chaseCooldown;
+    }
+
+    /// <summary>
+    /// Creates a fullscreen black Image for fade if one isn't assigned.
+    /// </summary>
+    private void CreateFadeImage()
+    {
+        // Create Canvas
+        GameObject canvasGO = new GameObject("FadeCanvas");
+        Canvas canvas = canvasGO.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvasGO.AddComponent<CanvasScaler>();
+        canvasGO.AddComponent<GraphicRaycaster>();
+
+        // Create Image
+        GameObject imageGO = new GameObject("FadeImage");
+        imageGO.transform.SetParent(canvasGO.transform, false);
+        Image img = imageGO.AddComponent<Image>();
+        img.color = new Color(0f, 0f, 0f, 0f);
+
+        // Stretch to fullscreen
+        RectTransform rt = img.rectTransform;
+        rt.anchorMin = Vector2.zero;
+        rt.anchorMax = Vector2.one;
+        rt.offsetMin = Vector2.zero;
+        rt.offsetMax = Vector2.zero;
+
+        fadeImage = img;
     }
 }

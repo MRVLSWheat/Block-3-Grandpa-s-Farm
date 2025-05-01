@@ -1418,6 +1418,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4483530348872589793, guid: d47598169589db0429fab51e824e46f9, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1386107472}
+    - target: {fileID: 4483530348872589793, guid: d47598169589db0429fab51e824e46f9, type: 3}
       propertyPath: chaseCooldown
       value: 10
       objectReference: {fileID: 0}
