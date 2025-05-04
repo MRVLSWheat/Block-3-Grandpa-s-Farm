@@ -67,13 +67,13 @@ namespace FlowerSpawner
         {
             return new Vector3(
                 // Random X position within 10 units of spawner
-                Random.Range(transform.position.x - 10, transform.position.x + 10),
+                Random.Range(this.transform.position.x - 10, this.transform.position.x + 10),
 
                 // Fixed Y position (9 units up)
-                9,
+                transform.position.y + 1,
 
                 // Random Z position within 10 units of spawner
-                Random.Range(transform.position.z - 10, transform.position.z + 10)
+                Random.Range(this.transform.position.z - 10, this.transform.position.z + 10)
             );
         }
     }
