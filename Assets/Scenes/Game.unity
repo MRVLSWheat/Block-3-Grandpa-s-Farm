@@ -1373,17 +1373,21 @@ MonoBehaviour:
   questTarget: {fileID: 2035463363}
   questTargetIdentifier: QuestTarget
   arrowPrefabOverride: {fileID: 0}
+  dyslexicFont: {fileID: 0}
   arrowOffset: {x: 0, y: 2, z: 0}
   interactRadius: 3
   targetRadius: 3
-  questDescription: Find that wierd guy watching the bunnies for me.
-  foundMessage: 'There he is! now lets return to gramps '
-  completionMessage: Great job! Quest complete.
-  searchingStageText: Find the wierd guy watching over the bunnies.
-  returningStageText: Return to Grandpa.
-  startMessageDuration: 2
-  foundMessageDuration: 2
-  completionMessageDuration: 2
+  questDescription: "Hey kid, can you find the weird guy always watching over the
+    bunnies close by? \nI have not spoken to him in a while and want to know if he
+    is doing alright."
+  foundMessage: "There he is! \nnow lets return to gramps "
+  completionMessage: "Thank you kid, \nGood to know that he is still having fun with
+    his job. "
+  searchingStageText: Go find the wierd guy watching over the bunnies.
+  returningStageText: Return to Grandpa
+  startMessageDuration: 5
+  foundMessageDuration: 5
+  completionMessageDuration: 5
 --- !u!114 &2046879458
 MonoBehaviour:
   m_ObjectHideFlags: 0

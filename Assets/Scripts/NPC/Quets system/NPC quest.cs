@@ -1,11 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// Handles quest start, navigation markers for quest giver and target, and completion entirely at runtime.
-/// Allows manual assignment of the quest target or falls back to lookup by tag or name.
-/// Auto-generates a basic 3D arrow marker mesh if no prefab is provided.
-/// Displays styled popups at the bottom-center of the screen and dynamic quest stage text at the top-right corner.
-/// </summary>
 public class NPCQuest : MonoBehaviour
 {
     [Header("Quest Setup")]
@@ -17,6 +11,11 @@ public class NPCQuest : MonoBehaviour
     [Header("Marker Prefab (Optional)")]
     [Tooltip("Drag an arrow prefab here if you want a custom marker; otherwise a default mesh will be generated.")]
     public GameObject arrowPrefabOverride;
+
+    [Header("Accessibility")]
+    [Tooltip("Dyslexia-friendly font to use for all UI text")]
+    public Font dyslexicFont;
+
     [Tooltip("Offset applied to the arrow above the target or quest giver position")]
     public Vector3 arrowOffset = new Vector3(0f, 2f, 0f);
 
@@ -30,9 +29,7 @@ public class NPCQuest : MonoBehaviour
     [TextArea] public string completionMessage = "Great job! Quest complete.";
 
     [Header("Quest Stage Texts")]
-    [Tooltip("Text displayed while searching for the target.")]
-    [TextArea] public string searchingStageText = "Find the target.";
-    [Tooltip("Text displayed after finding the target, prompting return.")]
+    [TextArea] public string searchingStageText = "Go find the target.";
     [TextArea] public string returningStageText = "Return to the quest giver.";
 
     [Header("Timings")]
@@ -52,30 +49,26 @@ public class NPCQuest : MonoBehaviour
     GameObject arrowPrefab;
     GameObject arrowInstance;
 
+    /// <summary>
+    /// True while any of the quest pop-ups (start/found/complete) are on screen.
+    /// </summary>
+    public static bool PopupActive { get; private set; }
+
     void Awake()
     {
-        var p = GameObject.FindGameObjectWithTag("Player");
-        if (p != null) player = p.transform;
-        else Debug.LogError("[NPCQuest] No GameObject tagged 'Player' in scene.");
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         if (questTarget == null)
         {
+            // Try tag lookup
             try
             {
-                var qtObj = GameObject.FindGameObjectWithTag(questTargetIdentifier);
-                if (qtObj != null) questTarget = qtObj.transform;
+                questTarget = GameObject.FindGameObjectWithTag(questTargetIdentifier)?.transform;
             }
-            catch (UnityException)
+            catch
             {
-                Debug.LogWarning($"[NPCQuest] Tag '{questTargetIdentifier}' not defined; attempting name lookup.");
+                questTarget = GameObject.Find(questTargetIdentifier)?.transform;
             }
-            if (questTarget == null)
-            {
-                var foundByName = GameObject.Find(questTargetIdentifier);
-                if (foundByName != null) questTarget = foundByName.transform;
-            }
-            if (questTarget == null)
-                Debug.LogError($"[NPCQuest] Could not find quest target. Please assign in inspector or check identifier '{questTargetIdentifier}'.");
         }
 
         arrowPrefab = arrowPrefabOverride != null ? arrowPrefabOverride : CreateDefaultArrow();
@@ -83,48 +76,55 @@ public class NPCQuest : MonoBehaviour
 
     void Update()
     {
+        PopupActive = (startMessageTimer > 0f) || (foundMessageTimer > 0f) || (completionMessageTimer > 0f);
+
         if (player == null || questTarget == null || arrowPrefab == null)
             return;
 
+        // Timers
         startMessageTimer = Mathf.Max(0f, startMessageTimer - Time.deltaTime);
         foundMessageTimer = Mathf.Max(0f, foundMessageTimer - Time.deltaTime);
         completionMessageTimer = Mathf.Max(0f, completionMessageTimer - Time.deltaTime);
 
         float distToGiver = Vector3.Distance(player.position, transform.position);
-        bool nearQuestGiver = distToGiver <= interactRadius;
+        bool nearGiver = distToGiver <= interactRadius;
         float distToTarget = Vector3.Distance(player.position, questTarget.position);
-        bool nearQuestTarget = distToTarget <= targetRadius;
+        bool nearTarget = distToTarget <= targetRadius;
 
-        if (!questStarted && nearQuestGiver && Input.GetKeyDown(KeyCode.E))
+        // Accept
+        if (!questStarted && nearGiver && Input.GetKeyDown(KeyCode.E))
         {
             questStarted = true;
             startMessageTimer = startMessageDuration;
         }
-        else if (questStarted && !targetReached && nearQuestTarget)
+        // Found target
+        else if (questStarted && !targetReached && nearTarget)
         {
             targetReached = true;
             foundMessageTimer = foundMessageDuration;
         }
-        else if (targetReached && !questCompleted && nearQuestGiver && Input.GetKeyDown(KeyCode.E))
+        // Complete
+        else if (targetReached && !questCompleted && nearGiver && Input.GetKeyDown(KeyCode.E))
         {
             questCompleted = true;
             completionMessageTimer = completionMessageDuration;
             TaskManager.Instance.IncrementCompletedTasks();
         }
 
-        Transform markerDestination = null;
-        if (!questStarted) markerDestination = transform;
-        else if (questStarted && !targetReached) markerDestination = questTarget;
-        else if (targetReached && !questCompleted) markerDestination = transform;
+        // Arrow logic
+        Transform markerDest = null;
+        if (!questStarted) markerDest = transform;
+        else if (questStarted && !targetReached) markerDest = questTarget;
+        else if (targetReached && !questCompleted) markerDest = transform;
 
-        if (markerDestination != null)
+        if (markerDest != null)
         {
             if (arrowInstance == null)
             {
                 arrowInstance = Instantiate(arrowPrefab);
                 arrowInstance.name = "QuestArrow";
             }
-            arrowInstance.transform.position = markerDestination.position + arrowOffset;
+            arrowInstance.transform.position = markerDest.position + arrowOffset;
             arrowInstance.transform.LookAt(player.position + Vector3.up);
             arrowInstance.transform.Rotate(180f, 0f, 0f, Space.Self);
         }
@@ -141,89 +141,124 @@ public class NPCQuest : MonoBehaviour
 
         float w = Screen.width;
         float h = Screen.height;
-        float popupWidth = 400f;
-        float popupHeight = 100f;
-        float popupX = (w - popupWidth) / 2;
-        float popupY = h - popupHeight - 10f;
+        float boxW = 400f;
+        float boxH = 100f;
+        float x = (w - boxW) / 2f;
+        float y = h - boxH - 10f;
 
-        // Style for popups
+        // Popup style
         GUIStyle popupStyle = new GUIStyle(GUI.skin.box)
         {
             alignment = TextAnchor.MiddleCenter,
             wordWrap = true,
-            fontSize = 24,
-            fontStyle = FontStyle.Bold
+            fontStyle = FontStyle.Bold,
+            font = dyslexicFont ?? GUI.skin.box.font
         };
+        popupStyle.fontSize = 24;
 
-        // Popups at bottom-center with styled text
+        GUIContent content;
+        int fontSize;
+        float requiredHeight;
+
+        // A) Start
         if (startMessageTimer > 0f)
         {
-            GUI.Box(new Rect(popupX, popupY, popupWidth, popupHeight), questDescription, popupStyle);
+            content = new GUIContent(questDescription);
+            fontSize = popupStyle.fontSize;
+            requiredHeight = popupStyle.CalcHeight(content, boxW);
+            while (requiredHeight > boxH && fontSize > 10)
+            {
+                fontSize--;
+                popupStyle.fontSize = fontSize;
+                requiredHeight = popupStyle.CalcHeight(content, boxW);
+            }
+            GUI.Box(new Rect(x, y, boxW, boxH), content, popupStyle);
             return;
         }
+        // B) Found
         if (foundMessageTimer > 0f)
         {
-            GUI.Box(new Rect(popupX, popupY, popupWidth, popupHeight), foundMessage, popupStyle);
+            content = new GUIContent(foundMessage);
+            fontSize = popupStyle.fontSize;
+            requiredHeight = popupStyle.CalcHeight(content, boxW);
+            while (requiredHeight > boxH && fontSize > 10)
+            {
+                fontSize--;
+                popupStyle.fontSize = fontSize;
+                requiredHeight = popupStyle.CalcHeight(content, boxW);
+            }
+            GUI.Box(new Rect(x, y, boxW, boxH), content, popupStyle);
             return;
         }
+        // C) Completion
         if (completionMessageTimer > 0f)
         {
-            GUI.Box(new Rect(popupX, popupY, popupWidth, popupHeight), completionMessage, popupStyle);
+            content = new GUIContent(completionMessage);
+            fontSize = popupStyle.fontSize;
+            requiredHeight = popupStyle.CalcHeight(content, boxW);
+            while (requiredHeight > boxH && fontSize > 10)
+            {
+                fontSize--;
+                popupStyle.fontSize = fontSize;
+                requiredHeight = popupStyle.CalcHeight(content, boxW);
+            }
+            GUI.Box(new Rect(x, y, boxW, boxH), content, popupStyle);
             return;
         }
 
-        // Interaction prompts
-        if (!questStarted && Vector3.Distance(player.position, transform.position) <= interactRadius)
-            GUI.Box(new Rect(w / 2 - 100, h - 100, 200, 40), "Press E to start quest");
-        if (targetReached && !questCompleted && Vector3.Distance(player.position, transform.position) <= interactRadius)
-            GUI.Box(new Rect(w / 2 - 100, h - 100, 200, 40), "Press E to complete quest");
+        // Interaction
+        float distGUI = Vector3.Distance(player.position, transform.position);
+        bool nearGUI = distGUI <= interactRadius;
+        if (!questStarted && nearGUI)
+            GUI.Box(new Rect((w - 200f) / 2f, h - 100f, 200f, 40f), "Press E to start quest");
+        else if (targetReached && !questCompleted && nearGUI)
+            GUI.Box(new Rect((w - 200f) / 2f, h - 100f, 200f, 40f), "Press E to complete quest");
 
-        // Dynamic top-right quest stage text
+        // Stage text top-right
         if (questStarted && !questCompleted)
         {
-            string stageText = !targetReached ? searchingStageText : returningStageText;
-            float stageWidth = 500f;
-            float stageHeight = 120f;
-            float stageX = w - stageWidth - 10f;
+            content = new GUIContent(!targetReached ? searchingStageText : returningStageText);
+            float stageW = 400f;
+            float stageH = 100f;
+            float stageX = w - stageW - 10f;
             float stageY = 10f;
             GUIStyle stageStyle = new GUIStyle(GUI.skin.box)
             {
                 alignment = TextAnchor.MiddleCenter,
                 wordWrap = true,
-                fontSize = 24,
-                fontStyle = FontStyle.Bold
+                font = dyslexicFont ?? GUI.skin.box.font
             };
-            GUI.Box(new Rect(stageX, stageY, stageWidth, stageHeight), stageText, stageStyle);
+            stageStyle.fontSize = 24;
+            fontSize = stageStyle.fontSize;
+            requiredHeight = stageStyle.CalcHeight(content, stageW);
+            while (requiredHeight > stageH && fontSize > 10)
+            {
+                fontSize--;
+                stageStyle.fontSize = fontSize;
+                requiredHeight = stageStyle.CalcHeight(content, stageW);
+            }
+            GUI.Box(new Rect(stageX, stageY, stageW, stageH), content, stageStyle);
         }
     }
 
     GameObject CreateDefaultArrow()
     {
         var go = new GameObject("DefaultArrowPrefab");
-        var filter = go.AddComponent<MeshFilter>();
-        var renderer = go.AddComponent<MeshRenderer>();
-        renderer.material = new Material(Shader.Find("Standard"));
+        var mf = go.AddComponent<MeshFilter>();
+        var mr = go.AddComponent<MeshRenderer>();
+        mr.material = new Material(Shader.Find("Standard"));
 
         Mesh mesh = new Mesh();
-        Vector3[] vertices = new Vector3[] {
-            new Vector3(0f, 1f, 0f),
-            new Vector3(-0.5f, 0f,  0.5f),
-            new Vector3( 0.5f, 0f,  0.5f),
-            new Vector3( 0.5f, 0f, -0.5f),
-            new Vector3(-0.5f, 0f, -0.5f)
+        mesh.vertices = new Vector3[] {
+            new Vector3(0f,1f,0f),
+            new Vector3(-0.5f,0f,0.5f),
+            new Vector3(0.5f,0f,0.5f),
+            new Vector3(0.5f,0f,-0.5f),
+            new Vector3(-0.5f,0f,-0.5f)
         };
-        int[] tris = new int[] {
-            0,1,2,
-            0,2,3,
-            0,3,4,
-            0,4,1,
-            4,2,1,
-            4,3,2
-        };
-        mesh.vertices = vertices;
-        mesh.triangles = tris;
+        mesh.triangles = new int[] {0,1,2, 0,2,3, 0,3,4, 0,4,1, 4,2,1, 4,3,2};
         mesh.RecalculateNormals();
-        filter.mesh = mesh;
+        mf.mesh = mesh;
 
         return go;
     }

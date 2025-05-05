@@ -1,3 +1,4 @@
+// NPCDialogue.cs
 using UnityEngine;
 using System;
 
@@ -65,21 +66,18 @@ public class NPCDialogue : MonoBehaviour
         float dist = Vector3.Distance(transform.position, _player.position);
         bool inRange = dist <= detectionRange;
 
-        // If in range and press key, trigger dialogue (and reset any leave timer)
         if (inRange && Input.GetKeyDown(interactKey))
         {
             TriggerDialogue();
             _leaveTimer = 0f;
         }
 
-        // If we're showing dialogue but out of range, start counting down
         if (_showDialogue && !inRange)
         {
             _leaveTimer += Time.deltaTime;
             if (_leaveTimer >= lingerDuration)
                 _showDialogue = false;
         }
-        // If we re-enter range, reset leave timer (keep dialogue on until next keypress)
         else if (inRange)
         {
             _leaveTimer = 0f;
@@ -89,25 +87,30 @@ public class NPCDialogue : MonoBehaviour
     void TriggerDialogue()
     {
         float d = DisturbanceManager.Instance.disturbanceValue;
-
         foreach (var e in entries)
         {
             if (d >= e.minDisturbance && d < e.maxDisturbance)
             {
                 _currentLine = e.text;
-                _showDialogue  = true;
+                _showDialogue = true;
                 return;
             }
         }
-
         _currentLine = "...";
         _showDialogue = true;
     }
 
     void OnGUI()
     {
-        if (!_showDialogue) return;
+        // 1) Early-out if the quest UI popup is active
+        if (NPCQuest.PopupActive)
+            return;
 
+        // 2) Then your normal dialogue check
+        if (!_showDialogue)
+            return;
+
+        // 3) Draw the dialogue box
         float w = guiBoxSize.x;
         float h = guiBoxSize.y;
         float x = (Screen.width  - w) / 2f;
