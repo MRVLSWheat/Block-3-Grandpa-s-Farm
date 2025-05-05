@@ -8,11 +8,11 @@ public class Move : MonoBehaviour
     void Update()
     {
         // Movement
-        float xDirection = Input.GetAxis("Horizontal");
+       /* float xDirection = Input.GetAxis("Horizontal");
         float zDirection = Input.GetAxis("Vertical");
         Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection).normalized;
         transform.position += moveDirection * speed * Time.deltaTime;
-
+       */
         // Harvest input
         if (Input.GetKeyDown(KeyCode.E))
         {
