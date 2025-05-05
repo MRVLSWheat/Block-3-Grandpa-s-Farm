@@ -1379,6 +1379,36 @@ MonoBehaviour:
   startMessageDuration: 2
   foundMessageDuration: 2
   completionMessageDuration: 2
+--- !u!114 &2046879458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046879450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809c3698a2a1cc446809d66dfed3c2c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entries:
+  - minDisturbance: 0
+    maxDisturbance: 10
+    text: 'Hey kid, Thanks for not disturbing the forrest so far. The animals dont
+      like it when you run around and chase them. '
+  - minDisturbance: 11
+    maxDisturbance: 20
+    text: Hey kid, Dont get so close to the animals! The forrest watchers started
+      to notice and they are not happy. They will keep you out of the forrest untill
+      the animals have calmed down.
+  playerTag: Player
+  detectionRange: 3
+  interactKey: 101
+  guiBoxSize: {x: 400, y: 80}
+  bottomOffset: 10
+  maxFontSize: 24
+  minFontSize: 10
+  lingerDuration: 2
 --- !u!1001 &2090499618997056760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1738,6 +1768,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6822675321178867116, guid: c16351f2c45a6e143b42c11abe3ea2c9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2046879451}
+    - targetCorrespondingSourceObject: {fileID: 6822675321178867116, guid: c16351f2c45a6e143b42c11abe3ea2c9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2046879458}
   m_SourcePrefab: {fileID: 100100000, guid: c16351f2c45a6e143b42c11abe3ea2c9, type: 3}
 --- !u!1001 &5888738765829453875
 PrefabInstance:
