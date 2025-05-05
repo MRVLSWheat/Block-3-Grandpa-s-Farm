@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using TMPro;
 
 public class BookMenu : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class BookMenu : MonoBehaviour
 
     private int currentPage = 0;  // Track the current page
     private bool isBookOpen = false;  // Track if the book is open
+    private bool toolTips = false;
+    [SerializeField] private bool toolTipsChecked = false; // Track if tooltips have been checked
+    [SerializeField] private float textLength = 300f; // X position for the tooltip text
+    [SerializeField] private float textHeight = 380f; // Y position for the tooltip text
 
     // Public variables to adjust the positions of the pages and background
     [Header("Position Adjustments")]
@@ -63,12 +69,21 @@ public class BookMenu : MonoBehaviour
             isBookOpen = !isBookOpen;
             bookUI.SetActive(isBookOpen);  // Activate the book UI
             Time.timeScale = isBookOpen ? 0 : 1;  // Freeze or unfreeze the game
+            if (toolTipsChecked == true)
+            {
+                toolTips = false;
+            }
 
             // If the book is opened, ensure it starts on the Main Menu page (index 0)
             if (isBookOpen)
             {
                 currentPage = 0;  // Always start with the Main Menu page
                 UpdatePages();
+
+                if (toolTipsChecked == false)
+                {
+                    toolTips = true; // Show tooltips when the book is opened
+                }
             }
         }
 
@@ -155,4 +170,18 @@ public class BookMenu : MonoBehaviour
         public Sprite leftPageSprite;  // Sprite for the left page
         public Sprite rightPageSprite; // Sprite for the right page
     }
+
+
+
+    private void OnGUI()
+    {
+        if (toolTips == true)
+        {
+            GUIStyle t = new GUIStyle();
+            t.fontSize = 20;
+            GUI.Label(new Rect(textLength, textHeight, 300, 100), "Q: Back | E: Forward", t);
+            toolTipsChecked = true;
+        }
+    }
+
 }
