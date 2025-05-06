@@ -72,6 +72,8 @@
     <Compile Include="Assets\Scripts\UIUX\BookPlane.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
     <Compile Include="Assets\Scripts\AnimalS\Animal proximity behavour.cs" />
+    <Compile Include="Assets\Scripts\NPC\Grandpa\Grandpa.cs" />
+    <Compile Include="Assets\Scripts\NPC\NPCManager.cs" />
     <Compile Include="Assets\Scripts\AnimalS\Passive animal AI.cs" />
     <Compile Include="Assets\Scripts\NPC\TestingGrandpa.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
@@ -80,19 +82,23 @@
     <Compile Include="Assets\Scripts\UIUX\Book.cs" />
     <Compile Include="Assets\Scripts\Game Processes\Force Respawn.cs" />
     <Compile Include="Assets\Scripts\AnimalS\AnimalAI.cs" />
-    <Compile Include="Assets\Scripts\NPC\Grandpa.cs" />
+    <Compile Include="Assets\Scripts\NPC\Quets system\Task manager.cs" />
     <Compile Include="Assets\Scripts\AnimalS\AnimalManager.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Game Processes\In game menu and book.cs" />
+    <Compile Include="Assets\Scripts\NPC\Grandpa\Grandpa Roaming.cs" />
     <Compile Include="Assets\StarterAssets\FirstPersonController\Scripts\BasicRigidBodyPush.cs" />
     <Compile Include="Assets\Scripts\Plants\Move.cs" />
     <Compile Include="Assets\Scripts\Game Processes\Disturb Meter.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
     <Compile Include="Assets\Polytope Studio\Lowpoly_Demos\Environment_Free\Helpers\MouseLook.cs" />
     <Compile Include="Assets\Scripts\Plants\FlowerGrowth.cs" />
+    <Compile Include="Assets\Scripts\NPC\NPCController.cs" />
     <Compile Include="Assets\Polytope Studio\Lowpoly_Demos\Environment_Free\Helpers\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Plants\HarvestableCube.cs" />
+    <Compile Include="Assets\Scripts\NPC\Grandpa\Grandpa Disturbance.cs" />
+    <Compile Include="Assets\Scripts\NPC\Quets system\NPC quest.cs" />
     <Compile Include="Assets\StarterAssets\InputSystem\StarterAssetsInputs.cs" />
   </ItemGroup>
   <ItemGroup>
