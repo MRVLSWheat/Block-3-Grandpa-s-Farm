@@ -77,8 +77,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Scripts\NPC\NPCManager.cs" />
     <Compile Include="Assets\Scripts\AnimalS\Passive animal AI.cs" />
-    <Compile Include="Assets\Scripts\NPC\TestingGrandpa.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+    <Compile Include="Assets\Scripts\NPC\TestingGrandpa.cs" />
     <Compile Include="Assets\Scripts\UIUX\Tooltip.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
