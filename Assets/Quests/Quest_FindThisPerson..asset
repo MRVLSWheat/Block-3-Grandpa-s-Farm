@@ -20,3 +20,7 @@ MonoBehaviour:
     type: 3
     targetID: PersonNPC
     requiredAmount: 1
+  - description: Return and talk to the quest giver
+    type: 0
+    targetID: QuestGiverNPC
+    requiredAmount: 1

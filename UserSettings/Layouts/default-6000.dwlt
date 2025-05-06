@@ -69,8 +69,8 @@ MonoBehaviour:
     y: 0
     width: 607
     height: 1293
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 49
+  controlID: 50
   draggingID: 0
 --- !u!114 &10
 MonoBehaviour:
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 50
+  controlID: 51
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -326,7 +326,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Quests
+    - Assets/Scripts/Quests
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -336,30 +336,30 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Quests
+  - Assets/Scripts/Quests
   m_LastFoldersGridSize: -1
   m_LastProjectPath: B:\Github\Block-3-Grandpa-s-Farm
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5ab20000
-    m_LastClickedID: 45658
-    m_ExpandedIDs: 0000000030ad000032ad000034ad000036ad000000ca9a3b
+    m_SelectedIDs: 7eb00000
+    m_LastClickedID: 45182
+    m_ExpandedIDs: 00000000e8af0000eaaf0000ecaf0000eeaf0000f0af0000f2af0000f4af0000f6af000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Quest system
-      m_OriginalName: Quest system
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 44854
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 5}
@@ -374,7 +374,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000030ad000032ad000034ad000036ad0000
+    m_ExpandedIDs: 00000000e8af0000eaaf0000ecaf0000eeaf0000f0af0000f2af0000f4af0000f6af0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -522,7 +522,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: b696ffff06fbffff46aa0000
+      m_ExpandedIDs: 06fbffff0eab000060ab0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1094,9 +1094,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.30274963, y: -0.5619546, z: 0.23179643, w: -0.7340438}
   m_Size:
-    m_Target: 4.793477
+    m_Target: 3.472756
     speed: 2
-    m_Value: 4.793477
+    m_Value: 3.472756
   m_Ortho:
     m_Target: 0
     speed: 2
