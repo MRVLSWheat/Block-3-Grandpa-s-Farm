@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Quest_FindThisPerson.
   m_EditorClassIdentifier: 
   questID: find_person_001
-  questTitle: Find This Person
-  description: Locate the person in the town.
+  questTitle: Find The watcher
+  description: Locate the person watching over the bunnies
   objectives:
-  - description: Find this person
+  - description: Find the forrest watcher
     type: 3
     targetID: PersonNPC
     requiredAmount: 1
-  - description: Return and talk to the quest giver
+  - description: Return and talk to grandpa
     type: 0
     targetID: QuestGiverNPC
     requiredAmount: 1
