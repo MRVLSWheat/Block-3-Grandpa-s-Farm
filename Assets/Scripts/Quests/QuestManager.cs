@@ -1,6 +1,6 @@
 using UnityEngine;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public class QuestManager : MonoBehaviour {
@@ -9,7 +9,10 @@ public class QuestManager : MonoBehaviour {
     public List<QuestSO> activeQuests = new List<QuestSO>();
     public List<string> completedQuests = new List<string>();
     private Dictionary<string, int[]> progress = new Dictionary<string, int[]>();
+
+    // Events for UI updates and quest completion
     public event Action OnQuestsUpdated;
+    public event Action<QuestSO> OnQuestComplete;
 
     void Awake() {
         if (Instance == null) {
@@ -31,13 +34,14 @@ public class QuestManager : MonoBehaviour {
         if (!progress.ContainsKey(questID)) return;
         var counts = progress[questID];
         var quest = activeQuests.First(q => q.questID == questID);
+
         counts[objIndex] = Mathf.Min(
             counts[objIndex] + amount,
             quest.objectives[objIndex].requiredAmount
         );
         OnQuestsUpdated?.Invoke();
 
-        // Check full completion of all objectives
+        // Check full completion
         bool allComplete = true;
         for (int i = 0; i < counts.Length; i++) {
             if (counts[i] < quest.objectives[i].requiredAmount) {
@@ -52,7 +56,6 @@ public class QuestManager : MonoBehaviour {
 
     // Handle "Find" objectives
     public void ReportFind(string targetID) {
-        // Copy activeQuests to avoid modifying collection during iteration
         var questsToCheck = new List<QuestSO>(activeQuests);
         foreach (var quest in questsToCheck) {
             for (int i = 0; i < quest.objectives.Count; i++) {
@@ -70,6 +73,13 @@ public class QuestManager : MonoBehaviour {
         completedQuests.Add(questID);
         progress.Remove(questID);
         OnQuestsUpdated?.Invoke();
+
+        // Fire the completion event
+        OnQuestComplete?.Invoke(quest);
+        // --- Added debug line here ---
+        Debug.Log($"[QuestManager] OnQuestComplete event fired for quest: {quest.questTitle}");
+        // --------------------------------
+
         Debug.Log($"Quest complete: {quest.questTitle}");
     }
 
