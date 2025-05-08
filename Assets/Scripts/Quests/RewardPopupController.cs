@@ -1,39 +1,69 @@
+// Assets/Scripts/RewardPopupController.cs
 using UnityEngine;
 using TMPro;
 using System.Collections;
 
 public class RewardPopupController : MonoBehaviour {
-    [Tooltip("Panel that contains the reward popup UI")]
-    public GameObject popupPanel;
-    [Tooltip("Text component for the reward message")]
-    public TMP_Text rewardText;
-    [Tooltip("How long the popup stays visible")]
+    [Header("Assign in Inspector")]
+    [Tooltip("Prefab of a TextMeshProUGUI text-only object")]
+    public GameObject rewardTextPrefab;
+    [Tooltip("Canvas to parent the text under")]
+    public Canvas uiCanvas;
+    [Tooltip("How long the text stays visible")]
     public float displayDuration = 2f;
 
-    void Awake() {
-        // Ensure it starts hidden
-        popupPanel.SetActive(false);
-        // Subscribe to the quest-complete event
+    [Header("Message Template")]
+    [Tooltip("Use {0} as placeholder for the quest title")]
+    public string messageTemplate = "🎉 Quest “{0}” complete!";
+
+    void Start() {
+        // Validate references
+        if (rewardTextPrefab == null) {
+            Debug.LogError("[RewardPopup] rewardTextPrefab is NOT assigned!", this);
+            enabled = false; 
+            return;
+        }
+        if (uiCanvas == null) {
+            Debug.LogError("[RewardPopup] uiCanvas is NOT assigned!", this);
+            enabled = false;
+            return;
+        }
+        if (QuestManager.Instance == null) {
+            Debug.LogError("[RewardPopup] No QuestManager.Instance found in scene!", this);
+            enabled = false;
+            return;
+        }
+
+        // Subscribe to quest completion
         QuestManager.Instance.OnQuestComplete += ShowReward;
     }
 
     void OnDestroy() {
-        // Clean up subscription
         if (QuestManager.Instance != null)
             QuestManager.Instance.OnQuestComplete -= ShowReward;
     }
 
     void ShowReward(QuestSO quest) {
         Debug.Log($"[RewardPopup] ShowReward called for quest: {quest.questTitle}");
-        rewardText.text = $"Quest '{quest.questTitle}' complete! You earned a reward.";
-        StartCoroutine(DisplayPopup());
+
+        // Instantiate the text-only prefab under the Canvas
+        GameObject txtGO = Instantiate(rewardTextPrefab, uiCanvas.transform);
+        TMP_Text txt = txtGO.GetComponent<TMP_Text>();
+        if (txt == null) {
+            Debug.LogError("[RewardPopup] No TMP_Text found on prefab!", txtGO);
+            Destroy(txtGO);
+            return;
+        }
+
+        // Set the dynamic message using the template
+        txt.text = string.Format(messageTemplate, quest.questTitle);
+
+        // Destroy after delay
+        StartCoroutine(DestroyAfter(txtGO, displayDuration));
     }
 
-    IEnumerator DisplayPopup() {
-        Debug.Log("[RewardPopup] Activating panel");
-        popupPanel.SetActive(true);
-        yield return new WaitForSeconds(displayDuration);
-        Debug.Log("[RewardPopup] Hiding panel");
-        popupPanel.SetActive(false);
+    IEnumerator DestroyAfter(GameObject go, float delay) {
+        yield return new WaitForSeconds(delay);
+        Destroy(go);
     }
 }

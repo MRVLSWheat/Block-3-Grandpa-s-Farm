@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &72578202
+--- !u!1 &40931975
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,10 +127,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 72578206}
-  - component: {fileID: 72578205}
-  - component: {fileID: 72578204}
-  - component: {fileID: 72578203}
+  - component: {fileID: 40931979}
+  - component: {fileID: 40931978}
+  - component: {fileID: 40931977}
+  - component: {fileID: 40931976}
   m_Layer: 5
   m_Name: Reward Canvas
   m_TagString: Untagged
@@ -138,13 +138,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &72578203
+--- !u!114 &40931976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72578202}
+  m_GameObject: {fileID: 40931975}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
@@ -155,13 +155,13 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &72578204
+--- !u!114 &40931977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72578202}
+  m_GameObject: {fileID: 40931975}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
@@ -178,13 +178,13 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!223 &72578205
+--- !u!223 &40931978
 Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72578202}
+  m_GameObject: {fileID: 40931975}
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
@@ -196,18 +196,18 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!224 &72578206
+--- !u!224 &40931979
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72578202}
+  m_GameObject: {fileID: 40931975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
@@ -313,6 +313,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &257583332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7840726564457592320, guid: a16a1f62339d5cf42a32b64e2185d945, type: 3}
+  m_PrefabInstance: {fileID: 4868534707238970134}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &257583335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257583332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0ccb5b80328df439290698a2cc58b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardTextPrefab: {fileID: 7361471968826230302, guid: af00a449f91e8cb4980433ccc94097f2, type: 3}
+  uiCanvas: {fileID: 40931978}
+  displayDuration: 5
+  messageTemplate: Good job! Task completed
 --- !u!1 &326706577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,7 +2156,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7840726564457592320, guid: a16a1f62339d5cf42a32b64e2185d945, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 257583335}
   m_SourcePrefab: {fileID: 100100000, guid: a16a1f62339d5cf42a32b64e2185d945, type: 3}
 --- !u!1001 &4905435741585725200
 PrefabInstance:
@@ -2287,4 +2311,4 @@ SceneRoots:
   - {fileID: 5888738765829453875}
   - {fileID: 4868534707238970134}
   - {fileID: 523334368}
-  - {fileID: 72578206}
+  - {fileID: 40931979}
