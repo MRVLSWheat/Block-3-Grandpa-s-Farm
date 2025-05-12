@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5145951705174748990}
-  - component: {fileID: 448840574917497908}
   - component: {fileID: 7205461452590783005}
+  - component: {fileID: -1785017662879117102}
   m_Layer: 0
   m_Name: Animal spawn erea (Aggresive)
   m_TagString: Untagged
@@ -33,21 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &448840574917497908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6983822485832532823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb524c592b1ad2444a8f62348aeb8f31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 50
-  animalPrefab: {fileID: 2853254249986564779, guid: 73a6fbe419241124083e8adfebf07334, type: 3}
-  maxAnimals: 10
 --- !u!135 &7205461452590783005
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -69,3 +54,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1785017662879117102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983822485832532823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff9069b95fe8ec45a52fc4b4f365d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalPrefab: {fileID: 0}
+  spawnCount: 10
+  spawnRadius: 20
+  maxAttemptsPerSpawn: 10

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7834368738234459165}
   - component: {fileID: 966595918659326118}
   - component: {fileID: 4877696639736535079}
-  - component: {fileID: 4410907171262314516}
-  - component: {fileID: -6942496642318402326}
-  - component: {fileID: 6849929514922657810}
+  - component: {fileID: 7587430858220594320}
+  - component: {fileID: -5302094415790893272}
+  - component: {fileID: 4992840720724754482}
   m_Layer: 0
   m_Name: Bunny placeholder
   m_TagString: Untagged
@@ -111,7 +111,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &4410907171262314516
+--- !u!195 &7587430858220594320
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,7 +133,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-6942496642318402326
+--- !u!114 &-5302094415790893272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,21 +142,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2853254249986564779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0923e20387a5c8409b99d609afe5d5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 724106ac7ab4747458dbc666e3aa5273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
   wanderRadius: 10
-  idleTimeMin: 2
-  idleTimeMax: 5
-  awarenessRadius: 10
-  fleeRadius: 10
-  fleeSpeed: 10
+  wanderInterval: 5
+  detectionRadius: 5
+  safeDistance: 15
   normalSpeed: 3.5
-  fleeDurationMin: 10
-  fleeDurationMax: 20
-  player: {fileID: 0}
---- !u!114 &6849929514922657810
+  fleeSpeed: 6
+--- !u!114 &4992840720724754482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,8 +160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2853254249986564779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ebe3f5152c2534ba0d841040be3dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3624e9d8cd3dd3940a28f5641d25afd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disturbanceIncreaseRate: 2
-  detectionRange: 10
+  disturbanceAmount: 1

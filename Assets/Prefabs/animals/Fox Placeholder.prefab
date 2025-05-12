@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7834368738234459165}
   - component: {fileID: 966595918659326118}
   - component: {fileID: 4877696639736535079}
-  - component: {fileID: 4410907171262314516}
-  - component: {fileID: -2995049115625815393}
-  - component: {fileID: 8724164121438881467}
+  - component: {fileID: -5203361743025779257}
+  - component: {fileID: 220749822813890691}
+  - component: {fileID: -2224675376575780420}
   m_Layer: 0
   m_Name: Fox Placeholder
   m_TagString: Untagged
@@ -111,7 +111,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &4410907171262314516
+--- !u!195 &-5203361743025779257
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,7 +133,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-2995049115625815393
+--- !u!114 &220749822813890691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,14 +142,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2853254249986564779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af7c76574cfc704599785df948d3ad7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b89276440da2224cb0086882af63957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 20
-  wanderInterval: 10
-  chaseRadius: 15
-  stopChaseRadius: 20
---- !u!114 &8724164121438881467
+  wanderRadius: 15
+  wanderInterval: 3
+  detectionRadius: 10
+  chaseSpeed: 7
+  normalSpeed: 3.5
+  giveUpDistance: 20
+  attackRange: 2
+--- !u!114 &-2224675376575780420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,9 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5b7533b6d5e4840bf69717c7a8ddcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 2
-  timeThreshold: 0.1
-  spawnRadius: 5
+  detectionRange: 5
+  spawnRadius: 3
   groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
